@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Compte - AW Transport</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/account.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <h1><span class="brand-aw">AW</span> TRANSPORT</h1>
+                    <p class="brand-tagline">VOYAGEZ. RÉSERVEZ. PARTEZ.</p>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Accueil</a>
+                <a href="search.html" class="nav-link">Rechercher</a>
+                <a href="account.html" class="nav-link active" id="nav-account">Mon Compte</a>
+                <button class="btn btn-outline" id="logout-btn">
+                    <i class="ti ti-logout"></i> Déconnexion
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Account Header -->
+    <section class="account-header">
+        <div class="container">
+            <div class="profile-card">
+                <div class="profile-avatar-large" id="profile-avatar">AS</div>
+                <div class="profile-info">
+                    <h1 id="profile-name">Chargement...</h1>
+                    <p id="profile-phone">+221 XX XXX XXXX</p>
+                    <span class="profile-badge">Client</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Account Content -->
+    <section class="account-section">
+        <div class="container">
+            <div class="account-tabs">
+                <button class="tab-btn active" data-tab="bookings">
+                    <i class="ti ti-ticket"></i>
+                    Mes réservations
+                </button>
+                <button class="tab-btn" data-tab="profile">
+                    <i class="ti ti-user"></i>
+                    Mon profil
+                </button>
+            </div>
+
+            <!-- Bookings Tab -->
+            <div id="bookings-tab" class="tab-content active">
+                <div class="section-header">
+                    <h2>Mes réservations</h2>
+                    <a href="search.html" class="btn btn-primary">
+                        <i class="ti ti-plus"></i> Nouvelle réservation
+                    </a>
+                </div>
+
+                <div class="bookings-filters">
+                    <button class="filter-btn active" data-status="all">Toutes</button>
+                    <button class="filter-btn" data-status="confirmed">Confirmées</button>
+                    <button class="filter-btn" data-status="cancelled">Annulées</button>
+                </div>
+
+                <div id="bookings-list" class="bookings-list">
+                    <div class="loading-state">
+                        <div class="spinner"></div>
+                        <p>Chargement de vos réservations...</p>
+                    </div>
+                </div>
+
+                <div id="no-bookings" class="empty-state" style="display: none;">
+                    <i class="ti ti-ticket-off"></i>
+                    <h3>Aucune réservation</h3>
+                    <p>Vous n'avez pas encore effectué de réservation</p>
+                    <a href="search.html" class="btn btn-primary">Rechercher un trajet</a>
+                </div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div id="profile-tab" class="tab-content">
+                <div class="section-header">
+                    <h2>Mon profil</h2>
+                </div>
+
+                <div class="profile-form-card">
+                    <form id="profile-form">
+                        <div class="form-group">
+                            <label>
+                                <i class="ti ti-user"></i> Nom complet
+                            </label>
+                            <input type="text" id="edit-name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <i class="ti ti-phone"></i> Téléphone
+                            </label>
+                            <input type="tel" id="edit-phone" disabled>
+                            <small class="form-hint">Le numéro de téléphone ne peut pas être modifié</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <i class="ti ti-mail"></i> Email
+                            </label>
+                            <input type="email" id="edit-email">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="ti ti-check"></i> Enregistrer les modifications
+                        </button>
+                    </form>
+                </div>
+
+                <div class="danger-zone">
+                    <h3>Zone de danger</h3>
+                    <p>Ces actions sont irréversibles</p>
+                    <button class="btn btn-outline" style="border-color: var(--danger); color: var(--danger);">
+                        <i class="ti ti-trash"></i> Supprimer mon compte
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cancel Modal -->
+    <div id="cancel-modal" class="modal">
+        <div class="modal-overlay" onclick="closeCancelModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Annuler la réservation</h2>
+                <button class="close-btn" onclick="closeCancelModal()">
+                    <i class="ti ti-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="warning-box">
+                    <i class="ti ti-alert-circle"></i>
+                    <div>
+                        <strong>Conditions d'annulation</strong>
+                        <p>En cas d'annulation, 80% du montant vous sera remboursé. Les frais de service ne sont pas remboursables.</p>
+                    </div>
+                </div>
+
+                <form id="cancel-form">
+                    <div class="form-group">
+                        <label>Raison de l'annulation</label>
+                        <textarea id="cancel-reason" rows="4" placeholder="Veuillez indiquer la raison de votre annulation..." required></textarea>
+                    </div>
+
+                    <div class="refund-info">
+                        <div class="refund-row">
+                            <span>Montant total payé</span>
+                            <span id="refund-total">0 FCFA</span>
+                        </div>
+                        <div class="refund-row">
+                            <span>Frais de service (non remboursable)</span>
+                            <span id="refund-fees">0 FCFA</span>
+                        </div>
+                        <div class="refund-row refund-amount">
+                            <strong>Montant remboursé</strong>
+                            <strong id="refund-amount">0 FCFA</strong>
+                        </div>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-outline" onclick="closeCancelModal()">Annuler</button>
+                        <button type="submit" class="btn btn-primary" style="background: var(--danger);">
+                            <i class="ti ti-check"></i> Confirmer l'annulation
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 AW Transport. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/account.js"></script>
+</body>
+</html>

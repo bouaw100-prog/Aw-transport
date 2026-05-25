@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AW Transport - Voyagez. Réservez. Partez.</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><span class="brand-aw">AW</span> TRANSPORT</h1>
+                <p class="brand-tagline">VOYAGEZ. RÉSERVEZ. PARTEZ.</p>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link active">Accueil</a>
+                <a href="search.html" class="nav-link">Rechercher</a>
+                <a href="#" class="nav-link" id="nav-login">Connexion</a>
+                <a href="#" class="btn btn-primary" id="nav-register">S'inscrire</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="ti ti-menu-2"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title animate-fade-in">Voyagez à travers le Sénégal en toute simplicité</h1>
+                <p class="hero-subtitle animate-fade-in-delay">Réservez vos trajets en bus, mini-bus, taxi ou moto. Simple, rapide et sécurisé.</p>
+                <div class="hero-buttons animate-fade-in-delay-2">
+                    <a href="search.html" class="btn btn-primary btn-large">
+                        <i class="ti ti-search"></i> Rechercher un trajet
+                    </a>
+                    <a href="#how-it-works" class="btn btn-outline btn-large">
+                        <i class="ti ti-info-circle"></i> Comment ça marche
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Search -->
+    <section class="quick-search">
+        <div class="container">
+            <div class="search-card">
+                <h2>Recherche rapide</h2>
+                <form class="search-form" id="quick-search-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="ti ti-map-pin"></i> Départ</label>
+                            <select id="quick-departure" required>
+                                <option value="">Choisir une ville</option>
+                                <option value="Dakar">Dakar</option>
+                                <option value="Thiès">Thiès</option>
+                                <option value="Saint-Louis">Saint-Louis</option>
+                                <option value="Kaolack">Kaolack</option>
+                                <option value="Mbour">Mbour</option>
+                                <option value="Ziguinchor">Ziguinchor</option>
+                                <option value="Touba">Touba</option>
+                                <option value="Matam">Matam</option>
+                                <option value="Orossogui">Orossogui</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="ti ti-flag"></i> Arrivée</label>
+                            <select id="quick-arrival" required>
+                                <option value="">Choisir une ville</option>
+                                <option value="Dakar">Dakar</option>
+                                <option value="Thiès">Thiès</option>
+                                <option value="Saint-Louis">Saint-Louis</option>
+                                <option value="Kaolack">Kaolack</option>
+                                <option value="Mbour">Mbour</option>
+                                <option value="Ziguinchor">Ziguinchor</option>
+                                <option value="Touba">Touba</option>
+                                <option value="Matam">Matam</option>
+                                <option value="Orossogui">Orossogui</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="ti ti-calendar"></i> Date</label>
+                            <input type="date" id="quick-date" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-large">
+                                <i class="ti ti-search"></i> Rechercher
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>Pourquoi choisir AW Transport ?</h2>
+                <p>Votre partenaire de confiance pour tous vos déplacements</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="ti ti-clock"></i>
+                    </div>
+                    <h3>Réservation instantanée</h3>
+                    <p>Réservez votre ticket en quelques clics, 24h/24 et 7j/7</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="ti ti-shield-check"></i>
+                    </div>
+                    <h3>Paiement sécurisé</h3>
+                    <p>Orange Money, Wave ou paiement au chauffeur</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="ti ti-users"></i>
+                    </div>
+                    <h3>Chauffeurs vérifiés</h3>
+                    <p>Tous nos chauffeurs sont sélectionnés et évalués</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="ti ti-discount-2"></i>
+                    </div>
+                    <h3>Meilleurs prix</h3>
+                    <p>Tarifs transparents et compétitifs</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="ti ti-headset"></i>
+                    </div>
+                    <h3>Support client</h3>
+                    <p>Une équipe à votre écoute pour vous accompagner</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="ti ti-refresh"></i>
+                    </div>
+                    <h3>Annulation facile</h3>
+                    <p>Annulez et soyez remboursé selon nos conditions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comment ça marche ?</h2>
+                <p>3 étapes simples pour réserver votre trajet</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Recherchez votre trajet</h3>
+                        <p>Sélectionnez votre ville de départ, votre destination et la date de voyage</p>
+                    </div>
+                </div>
+                <div class="step-arrow">
+                    <i class="ti ti-arrow-right"></i>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Choisissez votre véhicule</h3>
+                        <p>Comparez les options disponibles : bus, mini-bus, taxi ou moto</p>
+                    </div>
+                </div>
+                <div class="step-arrow">
+                    <i class="ti ti-arrow-right"></i>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Réservez et payez</h3>
+                        <p>Confirmez votre réservation et recevez votre ticket par SMS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="ti ti-users"></i>
+                    </div>
+                    <div class="stat-number" data-count="5000">0</div>
+                    <div class="stat-label">Clients satisfaits</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="ti ti-car"></i>
+                    </div>
+                    <div class="stat-number" data-count="150">0</div>
+                    <div class="stat-label">Chauffeurs partenaires</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="ti ti-route"></i>
+                    </div>
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-label">Villes desservies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="ti ti-ticket"></i>
+                    </div>
+                    <div class="stat-number" data-count="10000">0</div>
+                    <div class="stat-label">Réservations</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Prêt à partir ?</h2>
+                <p>Rejoignez des milliers de voyageurs qui font confiance à AW Transport</p>
+                <a href="search.html" class="btn btn-light btn-large">
+                    <i class="ti ti-rocket"></i> Commencer maintenant
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><span class="brand-aw">AW</span> TRANSPORT</h3>
+                    <p>Votre partenaire de confiance pour tous vos déplacements au Sénégal.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="ti ti-brand-facebook"></i></a>
+                        <a href="#"><i class="ti ti-brand-twitter"></i></a>
+                        <a href="#"><i class="ti ti-brand-instagram"></i></a>
+                        <a href="#"><i class="ti ti-brand-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="search.html">Rechercher un trajet</a></li>
+                        <li><a href="#how-it-works">Comment ça marche</a></li>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Centre d'aide</a></li>
+                        <li><a href="#">Conditions générales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Politique d'annulation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="ti ti-phone"></i> +221 XX XXX XXXX</li>
+                        <li><i class="ti ti-mail"></i> contact@awtransport.sn</li>
+                        <li><i class="ti ti-map-pin"></i> Dakar, Sénégal</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AW Transport. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

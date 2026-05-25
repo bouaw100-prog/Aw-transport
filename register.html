@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - AW Transport</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-left">
+            <div class="auth-branding">
+                <h1><span class="brand-aw">AW</span> TRANSPORT</h1>
+                <p>VOYAGEZ. RÉSERVEZ. PARTEZ.</p>
+            </div>
+            <div class="auth-illustration">
+                <i class="ti ti-user-plus"></i>
+                <h2>Rejoignez-nous !</h2>
+                <p>Créez votre compte et profitez de tous nos services</p>
+            </div>
+        </div>
+        
+        <div class="auth-right">
+            <div class="auth-form-container">
+                <div class="auth-header">
+                    <h2>Créer un compte</h2>
+                    <p>Remplissez le formulaire ci-dessous</p>
+                </div>
+                
+                <form id="register-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="name">
+                            <i class="ti ti-user"></i> Nom complet
+                        </label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            placeholder="Votre nom complet" 
+                            required
+                            minlength="3"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">
+                            <i class="ti ti-phone"></i> Numéro de téléphone
+                        </label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            placeholder="+221 XX XXX XXXX" 
+                            required
+                            pattern="^\+221\s?\d{2}\s?\d{3}\s?\d{4}$"
+                        >
+                        <small class="form-hint">Format: +221 XX XXX XXXX</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="ti ti-mail"></i> Email (optionnel)
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            placeholder="votre@email.com"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="ti ti-lock"></i> Mot de passe
+                        </label>
+                        <div class="password-input">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                placeholder="Minimum 6 caractères" 
+                                required
+                                minlength="6"
+                            >
+                            <button type="button" class="toggle-password" id="toggle-password">
+                                <i class="ti ti-eye"></i>
+                            </button>
+                        </div>
+                        <div class="password-strength" id="password-strength"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password">
+                            <i class="ti ti-lock-check"></i> Confirmer le mot de passe
+                        </label>
+                        <div class="password-input">
+                            <input 
+                                type="password" 
+                                id="confirm-password" 
+                                placeholder="Confirmez votre mot de passe" 
+                                required
+                                minlength="6"
+                            >
+                            <button type="button" class="toggle-password" id="toggle-confirm-password">
+                                <i class="ti ti-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="terms" required>
+                            <span>J'accepte les <a href="#" class="link">conditions générales</a> et la <a href="#" class="link">politique de confidentialité</a></span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-large btn-block">
+                        <i class="ti ti-user-plus"></i> Créer mon compte
+                    </button>
+                </form>
+                
+                <div class="auth-divider">
+                    <span>ou</span>
+                </div>
+                
+                <div class="auth-footer">
+                    <p>Vous avez déjà un compte ? <a href="login.html" class="link-primary">Se connecter</a></p>
+                </div>
+                
+                <div class="back-home">
+                    <a href="index.html" class="link">
+                        <i class="ti ti-arrow-left"></i> Retour à l'accueil
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
