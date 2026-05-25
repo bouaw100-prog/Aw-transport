@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - AW Transport</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+    <!-- Admin Navigation -->
+    <nav class="admin-nav">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><span class="brand-aw">AW</span> TRANSPORT</h1>
+                <p class="brand-tagline">DASHBOARD ADMINISTRATEUR</p>
+            </div>
+            <div class="nav-admin-info">
+                <span class="admin-badge">Admin</span>
+                <span id="admin-name">Administrateur</span>
+                <button class="btn btn-outline" id="admin-logout">
+                    <i class="ti ti-logout"></i> Déconnexion
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Sidebar -->
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="sidebar-link active" data-section="dashboard">
+                    <i class="ti ti-layout-dashboard"></i>
+                    <span>Vue d'ensemble</span>
+                </a>
+                <a href="#trips" class="sidebar-link" data-section="trips">
+                    <i class="ti ti-route"></i>
+                    <span>Gérer les trajets</span>
+                </a>
+                <a href="#bookings" class="sidebar-link" data-section="bookings">
+                    <i class="ti ti-ticket"></i>
+                    <span>Réservations</span>
+                </a>
+                <a href="#refunds" class="sidebar-link" data-section="refunds">
+                    <i class="ti ti-cash-banknote"></i>
+                    <span>Remboursements</span>
+                </a>
+                <a href="#clients" class="sidebar-link" data-section="clients">
+                    <i class="ti ti-users"></i>
+                    <span>Clients</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="admin-section active">
+                <div class="section-header">
+                    <h1>Vue d'ensemble</h1>
+                    <p>Tableau de bord administrateur</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i class="ti ti-ticket"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-bookings">0</h3>
+                            <p>Réservations totales</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="ti ti-cash"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-revenue">0 FCFA</h3>
+                            <p>Revenus totaux</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange">
+                            <i class="ti ti-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-clients">0</h3>
+                            <p>Clients inscrits</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon purple">
+                            <i class="ti ti-route"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-trips">0</h3>
+                            <p>Trajets actifs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="dashboard-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2><i class="ti ti-activity"></i> Activité récente</h2>
+                        </div>
+                        <div class="card-body">
+                            <div id="recent-activity" class="activity-list">
+                                <div class="loading-state">
+                                    <div class="spinner"></div>
+                                    <p>Chargement...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trips Section -->
+            <section id="trips-section" class="admin-section">
+                <div class="section-header">
+                    <h1>Gérer les trajets</h1>
+                    <button class="btn btn-primary" id="add-trip-btn">
+                        <i class="ti ti-plus"></i> Ajouter un trajet
+                    </button>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div id="trips-list">
+                            <div class="loading-state">
+                                <div class="spinner"></div>
+                                <p>Chargement des trajets...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bookings Section -->
+            <section id="bookings-section" class="admin-section">
+                <div class="section-header">
+                    <h1>Toutes les réservations</h1>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="data-table" id="bookings-table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Client</th>
+                                        <th>Trajet</th>
+                                        <th>Date</th>
+                                        <th>Passagers</th>
+                                        <th>Montant</th>
+                                        <th>Statut</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bookings-tbody">
+                                    <tr>
+                                        <td colspan="8" class="loading-state">
+                                            <div class="spinner"></div>
+                                            <p>Chargement...</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Refunds Section -->
+            <section id="refunds-section" class="admin-section">
+                <div class="section-header">
+                    <h1>Demandes de remboursement</h1>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="data-table" id="refunds-table">
+                                <thead>
+                                    <tr>
+                                        <th>Code réservation</th>
+                                        <th>Client</th>
+                                        <th>Raison</th>
+                                        <th>Montant</th>
+                                        <th>Date demande</th>
+                                        <th>Statut</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="refunds-tbody">
+                                    <tr>
+                                        <td colspan="7" class="loading-state">
+                                            <div class="spinner"></div>
+                                            <p>Chargement...</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Clients Section -->
+            <section id="clients-section" class="admin-section">
+                <div class="section-header">
+                    <h1>Liste des clients</h1>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="data-table" id="clients-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Téléphone</th>
+                                        <th>Email</th>
+                                        <th>Réservations</th>
+                                        <th>Inscrit le</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="clients-tbody">
+                                    <tr>
+                                        <td colspan="5" class="loading-state">
+                                            <div class="spinner"></div>
+                                            <p>Chargement...</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add/Edit Trip Modal -->
+    <div id="trip-modal" class="modal">
+        <div class="modal-overlay" onclick="closeTripModal()"></div>
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2 id="trip-modal-title">Ajouter un trajet</h2>
+                <button class="close-btn" onclick="closeTripModal()">
+                    <i class="ti ti-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="trip-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nom du chauffeur *</label>
+                            <input type="text" id="driver-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Téléphone du chauffeur *</label>
+                            <input type="tel" id="driver-phone" required placeholder="+221 XX XXX XXXX">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Adresse du chauffeur *</label>
+                        <input type="text" id="driver-address" required placeholder="Ex: Médina, Dakar">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Type de véhicule *</label>
+                            <select id="vehicle-type" required>
+                                <option value="">Choisir...</option>
+                                <option value="bus">Bus</option>
+                                <option value="minibus">Mini-bus</option>
+                                <option value="taxi">Taxi</option>
+                                <option value="moto">Moto</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre de places *</label>
+                            <input type="number" id="seats" required min="1">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Ville de départ *</label>
+                            <select id="departure" required>
+                                <option value="">Choisir...</option>
+                                <option value="Dakar">Dakar</option>
+                                <option value="Thiès">Thiès</option>
+                                <option value="Saint-Louis">Saint-Louis</option>
+                                <option value="Kaolack">Kaolack</option>
+                                <option value="Mbour">Mbour</option>
+                                <option value="Ziguinchor">Ziguinchor</option>
+                                <option value="Touba">Touba</option>
+                                <option value="Matam">Matam</option>
+                                <option value="Orossogui">Orossogui</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Ville d'arrivée *</label>
+                            <select id="arrival" required>
+                                <option value="">Choisir...</option>
+                                <option value="Dakar">Dakar</option>
+                                <option value="Thiès">Thiès</option>
+                                <option value="Saint-Louis">Saint-Louis</option>
+                                <option value="Kaolack">Kaolack</option>
+                                <option value="Mbour">Mbour</option>
+                                <option value="Ziguinchor">Ziguinchor</option>
+                                <option value="Touba">Touba</option>
+                                <option value="Matam">Matam</option>
+                                <option value="Orossogui">Orossogui</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Date du trajet *</label>
+                            <input type="date" id="trip-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Prix par personne (FCFA) *</label>
+                            <input type="number" id="price" required min="100">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Heure de départ *</label>
+                            <input type="time" id="departure-time" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Heure d'arrivée (estimée)</label>
+                            <input type="time" id="arrival-time">
+                        </div>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-outline" onclick="closeTripModal()">Annuler</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="ti ti-check"></i> Enregistrer
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

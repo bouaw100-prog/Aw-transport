@@ -498,6 +498,57 @@ app.get('/api/stats', (req, res) => {
     });
 });
 
+// Get admin stats
+app.get('/api/admin/stats', authenticateToken, isAdmin, (req, res) => {
+    db.all(`
+        SELECT
+            (SELECT COUNT(*) FROM trips WHERE status = 'active') as total_trips,
+            (SELECT COUNT(*) FROM bookings) as total_bookings,
+            (SELECT SUM(total_amount) FROM bookings WHERE booking_status = 'confirmed') as total_revenue,
+            (SELECT COUNT(*) FROM users WHERE role = 'client') as total_clients
+    `, (err, rows) => {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
+        res.json(rows[0]);
+    });
+});
+
+// Delete trip (admin)
+app.delete('/api/trips/:id', authenticateToken, isAdmin, (req, res) => {
+    db.run('DELETE FROM trips WHERE id = ?', [req.params.id], function(err) {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
+        res.json({ message: 'Trajet supprimé avec succès' });
+    });
+});
+
+// Update trip (admin)
+app.put('/api/trips/:id', authenticateToken, isAdmin, (req, res) => {
+    const {
+        driver_name, driver_phone, driver_address, vehicle_type,
+        departure, arrival, departure_time, arrival_time,
+        date, price, seats
+    } = req.body;
+
+    db.run(
+        `UPDATE trips SET 
+            driver_name = ?, driver_phone = ?, driver_address = ?, vehicle_type = ?,
+            departure = ?, arrival = ?, departure_time = ?, arrival_time = ?,
+            date = ?, price = ?, seats_total = ?
+         WHERE id = ?`,
+        [driver_name, driver_phone, driver_address, vehicle_type, departure, arrival, 
+         departure_time, arrival_time, date, price, seats, req.params.id],
+        function(err) {
+            if (err) {
+                return res.status(500).json({ error: err.message });
+            }
+            res.json({ message: 'Trajet mis à jour avec succès' });
+        }
+    );
+});
+
 // Serve index.html
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
