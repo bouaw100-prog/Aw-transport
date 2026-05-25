@@ -1,5 +1,5 @@
 // Authentication JavaScript
-
+ 
 // Toggle Password Visibility
 document.querySelectorAll('.toggle-password').forEach(button => {
     button.addEventListener('click', () => {
@@ -17,11 +17,11 @@ document.querySelectorAll('.toggle-password').forEach(button => {
         }
     });
 });
-
+ 
 // Password Strength Checker
 const passwordInput = document.getElementById('password');
 const passwordStrength = document.getElementById('password-strength');
-
+ 
 if (passwordInput && passwordStrength) {
     passwordInput.addEventListener('input', () => {
         const password = passwordInput.value;
@@ -44,7 +44,7 @@ if (passwordInput && passwordStrength) {
         }
     });
 }
-
+ 
 // Format Phone Number
 function formatPhoneNumber(input) {
     let value = input.value.replace(/\D/g, '');
@@ -53,7 +53,7 @@ function formatPhoneNumber(input) {
         value = '221' + value;
     }
     
-    value = value.substring(0, 11);
+    value = value.substring(0, 12);
     
     let formatted = '+221';
     if (value.length > 3) {
@@ -63,18 +63,18 @@ function formatPhoneNumber(input) {
         formatted += ' ' + value.substring(5, 8);
     }
     if (value.length > 8) {
-        formatted += ' ' + value.substring(8, 11);
+        formatted += ' ' + value.substring(8, 12);
     }
     
     input.value = formatted;
 }
-
+ 
 // Auto-format phone inputs
 document.querySelectorAll('input[type="tel"]').forEach(input => {
     input.addEventListener('input', () => formatPhoneNumber(input));
     input.addEventListener('blur', () => formatPhoneNumber(input));
 });
-
+ 
 // Login Form
 const loginForm = document.getElementById('login-form');
 if (loginForm) {
@@ -136,7 +136,7 @@ if (loginForm) {
         }
     });
 }
-
+ 
 // Register Form
 const registerForm = document.getElementById('register-form');
 if (registerForm) {
@@ -212,7 +212,7 @@ if (registerForm) {
         }
     });
 }
-
+ 
 // Add loader animation CSS
 const loaderStyles = document.createElement('style');
 loaderStyles.textContent = `
