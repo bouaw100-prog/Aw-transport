@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réserver - AW Transport</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <h1><span class="brand-aw">AW</span> TRANSPORT</h1>
+                    <p class="brand-tagline">VOYAGEZ. RÉSERVEZ. PARTEZ.</p>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Accueil</a>
+                <a href="search.html" class="nav-link">Rechercher</a>
+                <a href="account.html" class="nav-link" id="nav-account">Mon Compte</a>
+                <button class="btn btn-outline" id="logout-btn">
+                    <i class="ti ti-logout"></i> Déconnexion
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Booking Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="booking-header">
+                <h1>Réserver votre trajet</h1>
+                <p>Complétez les informations ci-dessous pour finaliser votre réservation</p>
+            </div>
+
+            <div class="booking-layout">
+                <!-- Trip Details -->
+                <div class="trip-summary-card">
+                    <h2><i class="ti ti-route"></i> Détails du trajet</h2>
+                    <div id="trip-summary">
+                        <div class="loading-state">
+                            <div class="spinner"></div>
+                            <p>Chargement...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Form -->
+                <div class="booking-form-card">
+                    <h2><i class="ti ti-ticket"></i> Informations de réservation</h2>
+                    <form id="booking-form">
+                        <div class="form-group">
+                            <label>
+                                <i class="ti ti-users"></i> Nombre de passagers *
+                            </label>
+                            <select id="passengers-count" required>
+                                <option value="">Choisir...</option>
+                                <option value="1">1 passager</option>
+                                <option value="2">2 passagers</option>
+                                <option value="3">3 passagers</option>
+                                <option value="4">4 passagers</option>
+                                <option value="5">5 passagers</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <i class="ti ti-credit-card"></i> Mode de paiement *
+                            </label>
+                            <div class="payment-options">
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="orange" required>
+                                    <div class="payment-card">
+                                        <i class="ti ti-brand-apple"></i>
+                                        <span>Orange Money</span>
+                                    </div>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="wave" required>
+                                    <div class="payment-card">
+                                        <i class="ti ti-wave-sine"></i>
+                                        <span>Wave</span>
+                                    </div>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="cash" required>
+                                    <div class="payment-card">
+                                        <i class="ti ti-cash"></i>
+                                        <span>Espèces</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="pricing-summary">
+                            <div class="price-row">
+                                <span>Prix par personne</span>
+                                <span id="price-per-person">0 FCFA</span>
+                            </div>
+                            <div class="price-row">
+                                <span>Nombre de passagers</span>
+                                <span id="total-passengers">0</span>
+                            </div>
+                            <div class="price-row">
+                                <span>Sous-total</span>
+                                <span id="subtotal">0 FCFA</span>
+                            </div>
+                            <div class="price-row">
+                                <span>Frais de service (5%)</span>
+                                <span id="service-fee">0 FCFA</span>
+                            </div>
+                            <div class="price-row total">
+                                <strong>Total à payer</strong>
+                                <strong id="total-amount">0 FCFA</strong>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large btn-block">
+                            <i class="ti ti-check"></i> Confirmer la réservation
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="success-icon">
+                <i class="ti ti-circle-check"></i>
+            </div>
+            <h2>Réservation confirmée !</h2>
+            <p>Votre code de réservation :</p>
+            <div class="booking-code-display" id="booking-code-display">AW12345678</div>
+            <p class="success-message">Un SMS de confirmation a été envoyé à votre numéro de téléphone.</p>
+            <div class="modal-actions">
+                <a href="account.html" class="btn btn-primary">
+                    <i class="ti ti-ticket"></i> Voir mes réservations
+                </a>
+                <a href="search.html" class="btn btn-outline">
+                    <i class="ti ti-search"></i> Réserver un autre trajet
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/booking.js"></script>
+</body>
+</html>
